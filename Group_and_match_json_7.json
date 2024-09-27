@@ -1,0 +1,38 @@
+[
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        sales: {
+          $gt: 2000,
+          $lt: 5000
+        }
+      }
+  },
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: "$ship_mode",
+        salesSum: {
+          $sum: "$sales"
+        }
+      }
+  },
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        salesSum: {
+          $gt: 50000
+        }
+      }
+  }
+]

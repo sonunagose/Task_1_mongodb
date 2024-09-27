@@ -1,0 +1,10 @@
+
+
+/* group age and segment */
+  {
+    _id: "$segment",
+    averageAge: {
+       $avg: "$age"  
+    }
+  }
+  
